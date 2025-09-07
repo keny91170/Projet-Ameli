@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'accueil</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/png">
+</head>
+
+<body>
+    <div class="container">
+        {% include 'nav_template.html' %}
+        
+        <div class="carousel-container">
+            <button class="arrow arrow-left">&#8592;</button>
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img scr="" alt="Professions Santé">
+                    <div class="carousel-caption">Professions Santé</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="" alt="Honoraires">
+                    <div class="carousel-caption">Honoraires</div>
+                </div>
+            </div>
+            <button class="arrow arrow-right">&#8594;</button>
+            <div class="navigation">
+                <div class="nav-dot active" data-index="0"></div>
+                <div class="nav-dot" data-index="1"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const carousel = document.querySelector('.carousel');
+        const items = document.querySelectorAll('.carousel-item');
+        const dots = document.querySelectorAll('.nav-dot');
+        const arrowLeft = document.querySelector('.arrow-left');
+        const arrowRight = document.querySelector('.arrow-right');
+
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            const offset = -currentIndex * 100;
+            carousel.style.transform = `translateX(${offset}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        arrowLeft.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : items.length - 1;
+            updateCarousel();
+        });
+
+        arrowRight.addEventListener('click', () => {
+            currentIndex = (currentIndex < items.length - 1) ? currentIndex + 1 : 0;
+            updateCarousel();
+        });
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                currentIndex = parseInt(dot.dataset.index);
+                updateCarousel();
+            });
+        });
+    </script>
+</body>
+</html>

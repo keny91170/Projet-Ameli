@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Ajout du lien vers le style Bootstrap pour améliorer l'apparence du tableau -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+
+
+<nav id="menu">
+    <img src="{{ url_for('static', filename='images/SaniTech_logo.png') }}" alt="logo SaniTech">
+
+    <ul>
+        <li><a href="{{ url_for('accueil') }}">Accueil</a></li>
+        <li><a href="{{ url_for('recherche_donnees') }}">Recherche de données</a></li>
+        <li><a href="{{ url_for('afficher_honoraires') }}">Recherche d'honoraires</a></li>
+        <li><a href="{{ url_for('graphique') }}">Histogramme</a></li>
+    </ul>
+</nav>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afficher les honoraires</title>
+    <!-- Ajout du lien vers le style Bootstrap pour améliorer l'apparence du tableau -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/png">
+</head>
+<body>
+    <div class="container" >
+        {% include 'nav_template.html' %}
+        <main>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th><a href="{{ url_for('afficher_honoraires', order_by='ProfessionsSante.profession_sante') }}">Profession</a></th>
+                        <th><a href="{{ url_for('afficher_honoraires', order_by='Honoraires.annee') }}">Annee</a></th>
+                        <th><a href="{{ url_for('afficher_honoraires', order_by='SUM(Honoraires.Montant_des_honoraires_moyens)') }}">Sommes depassements moyens</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for index, row in honoraire.iterrows() %}
+
+                    <tr>
+                        <td>{{ row['profession_sante'] }}</td>
+                        <td>{{ row['annee'] }}</td>
+                        <td>{{ row['depassements_moyens'] | round(2)}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </main>
+    </div>
+</body>

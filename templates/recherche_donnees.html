@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recherche de données</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        
+        {% include 'nav_template.html' %}
+        <h1>Recherche de Données</h1>
+        <form action="/resultats" method="GET">
+            <div class="form-group">
+                <label for="profession">Choisissez une profession :</label>
+                <select name="profession" id="profession" class="form-control">
+                    <option value="">Toutes</option>
+                    {% for profession in fprofession %}
+                        <option value="{{ profession }}">{{ profession }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="departement">Choisissez un département :</label>
+                <select name="departement" id="departement" class="form-control">
+                    <option value="">Tous</option>
+                    {% for departement in fdepartement %}
+                        <option value="{{ departement }}">{{ departement }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="annee">Choisissez une année :</label>
+                <select name="annee" id="annee" class="form-control">
+                    <option value="">Toutes</option>
+                    {% for annee in fannee %}
+                        <option value="{{ annee }}">{{ annee }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Rechercher</button>
+        </form>
+    </div>
+</body>
+</html>

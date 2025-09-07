@@ -1,0 +1,41 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'accueil</title>
+    <!-- Ajout du lien vers le style Bootstrap pour améliorer l'apparence du tableau -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/png">
+</head>
+
+<body>
+    <div class="container">
+        
+        {% include 'nav_template.html' %}
+        
+        <p><code>&#x1F6C8;</code> Triez la liste de la demographie  en cliquant sur les en-têtes de colonnes</p>
+        <a href="{{ url_for('contenu_table') }}">Retour</a>
+        <h1> Liste de la demographie</h1>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th><a href="{{ url_for('afficher_profession', order_by='id_profession') }}">id_profession</a></th>
+                    <th><a href="{{ url_for('afficher_profession', order_by='profession_sante') }}">Année</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, row in profession.iterrows() %}
+                    <tr>
+                        <td>{{ row['id_profession'] }}</td>
+                        <td>{{ row['profession_sante'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afficher les étudiants</title>
+    <!-- Ajout du lien vers le style Bootstrap pour améliorer l'apparence du tableau -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/png">
+</head>
+
+
+<body>
+    <div class="container mt-4">
+        
+
+        {% include 'nav_template.html' %}
+
+        <a href="{{ url_for('contenu_table') }}">Retour</a>
+        <h1>Liste des départements</h1>
+        <p><code>&#x1F6C8;</code> Triez la liste des départements en cliquant sur les en-têtes de colonnes</p>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th><a href="{{ url_for('afficher_departement', order_by='departement') }}">Département</a></th>
+                    <th><a href="{{ url_for('afficher_departement', order_by='libelle_departement') }}">Libelle département</a></th>
+                    <th><a href="{{ url_for('afficher_departement', order_by='region') }}">Région</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, row in departement.iterrows() %}
+                    <tr>
+                        <td>{{ row['departement'] }}</td>
+                        <td>{{ row['libelle_departement'] }}</td>
+                        <td>{{ row['region'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

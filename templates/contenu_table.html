@@ -1,0 +1,33 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'accueil</title>
+    <!-- Ajout du lien vers le style Bootstrap pour améliorer l'apparence du tableau -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400..900&family=Jersey+10&family=Playwrite+IN:wght@100..400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        {% include 'nav_template.html' %}
+
+        <h1 id="centre" >Liste des tables</h1>
+        <br>
+        <div class="lien_table">
+            <li><a href="{{ url_for('afficher_prescription') }}">Table prescription</a></li>
+            <li><a href="{{ url_for('afficher_demographie') }}">Table demographie</a></li>
+            <li><a href="{{ url_for('afficher_honoraires') }}">Table honoraires</a></li>
+            <li><a href="{{ url_for('afficher_departement') }}">Table départements</a></li>
+            <li><a href="{{ url_for('afficher_region') }}">Table region</a></li>
+            <li><a href="{{ url_for('afficher_profession') }}">Table profession</a></li>
+        </div>
+    </div>
+</body>

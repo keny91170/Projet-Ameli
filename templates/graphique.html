@@ -1,0 +1,36 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'accueil</title>
+    <!-- Ajout du lien vers le style Bootstrap pour améliorer l'apparence du tableau -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/png">
+</head>
+
+<body>
+    <div class="container">
+        
+        {% include 'nav_template.html' %}
+        
+
+        <h2>Histogramme des effectifs des régions</h2>
+        <img id="image" src="/static/demographie_chart.png" alt="logo assurance-maladie" width="900px" >
+    
+
+
+    </div>
+    
+    <footer>
+
+
+
+    </footer>
+
+</body>
+
+</html>

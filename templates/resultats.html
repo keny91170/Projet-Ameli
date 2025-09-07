@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats de recherche</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        {% include 'nav_template.html' %}
+        <!-- Titre dynamique -->
+        <h1>Résultat de recherche pour {{ titre }}</h1>
+
+        <a href="{{ url_for('recherche_donnees') }}">Retour</a>
+
+        {% if resultats %}
+        <!-- Tableau des prescriptions individuelles -->
+        <table class="table table-bordered table-striped mt-4">
+            <thead>
+                <tr>
+                    <th>#</th> <!-- Numérotation dynamique -->
+                    <th>ID Prescription</th>
+                    <th>Montant Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in resultats %}
+                <tr>
+                    <td>{{ loop.index }}</td> <!-- Numéro de ligne -->
+                    <td>{{ row['ID_Prescription'] }}</td>
+                    <td>{{ row['Montant_Total'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>Aucun résultat trouvé pour cette recherche.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

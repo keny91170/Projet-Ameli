@@ -1,0 +1,46 @@
+<!-- apropos.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A propos</title>
+    <!-- Ajout du lien vers le style Bootstrap pour améliorer l'apparence du tableau -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/png">
+</head>
+<body>
+    <div class="container mt-4">
+
+        <h1>À Propos de l'application</h1>
+
+        {% include 'nav_template.html' %}
+        
+        <p>Bienvenue dans notre démonstrateur d'application web conçu pour illustrer l'intégration harmonieuse de Flask,
+           SQLite3, Pandas et Matplotlib. Cette application a été développée dans le but de présenter une approche efficace 
+           pour visualiser et analyser des données provenant d'une base de données locale.
+        </p>
+
+        <h2>Fonctionnalités principales</h2>
+        <nav>
+            <ol>
+                <li><code>Flask</code> : L'application repose sur Flask, un framework web léger et puissant pour Python. Flask facilite la création d'applications web robustes et extensibles.</li>
+                <li><code>SQLite3</code> : La gestion des données est assurée par SQLite3, une base de données relationnelle légère et autonome. Nous exploitons la simplicité et la portabilité de SQLite3 pour stocker et récupérer les informations nécessaires.</li>
+                <li><code>Pandas</code> : Pandas, la bibliothèque d'analyse de données de Python, est utilisée pour manipuler et structurer les données extraites de notre base SQLite3. Les fonctionnalités puissantes de Pandas facilitent l'exploration et la transformation des données.</li>
+                <li><code>Matplotlib</code> : Pour une visualisation efficace, nous avons intégré Matplotlib, une bibliothèque graphique en 2D qui génère des graphiques. Matplotlib nous permet de créer des représentations visuelles des données, y compris des boîtes à moustaches pour une analyse détaillée.</li>
+            </ol> 
+        </nav>       
+
+        <h2>Comment utiliser l'application</h2>
+        <ol>
+            <li>Accès à la Base de données : L'application se connecte à une base de données SQLite3 locale. Assurez-vous d'avoir la base de données correctement configurée et remplie avec les données nécessaires.</li>
+            <li>Visualiser le contenu des tables : L'utilisation de requêtes SQLite, déclechées avec Pandas, qui renvoient le contenu des tables</li>
+            <li>Sélectionner des données : Utiliser la technique des jointures SQL afin de rechercher des données</li>
+            <li>Visualisation des statistiques : Explorez les statistiques de chaque classe, y compris la moyenne, l'écart-type, le minimum et le maximum des notes.</li>
+            <li>Représentations graphiques : Découvrez la distribution des notes ou encore des boîtes à moustaches générées par Matplotlib pour une représentation visuelle complète des données.</li>
+        </ol>
+    </div>
+</body>
+</html>
